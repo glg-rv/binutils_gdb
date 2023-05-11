@@ -2320,6 +2320,13 @@
 #define MASK_WRS_NTO 0xffffffff
 #define MATCH_WRS_STO 0x01d00073
 #define MASK_WRS_STO 0xffffffff
+/* Zacas instructions.  */
+#define MATCH_AMOCAS_W 0x2800202f
+#define MASK_AMOCAS_W 0xf800707f
+#define MATCH_AMOCAS_D 0x2800302f
+#define MASK_AMOCAS_D 0xf800707f
+#define MATCH_AMOCAS_Q 0x2800402f
+#define MASK_AMOCAS_Q 0xf800707f
 /* Vendor-specific (T-Head) XTheadBa instructions.  */
 #define MATCH_TH_ADDSL 0x0000100b
 #define MASK_TH_ADDSL 0xf800707f
@@ -3361,6 +3368,7 @@ DECLARE_INSN(cbo_zero, MATCH_CBO_ZERO, MASK_CBO_ZERO)
 /* Zicond instructions. */
 DECLARE_INSN(czero_eqz, MATCH_CZERO_EQZ, MASK_CZERO_EQZ)
 DECLARE_INSN(czero_nez, MATCH_CZERO_NEZ, MASK_CZERO_NEZ)
+
 /* Zihintntl hint instructions.  */
 DECLARE_INSN(ntl_p1, MATCH_NTL_P1, MASK_NTL_P1)
 DECLARE_INSN(ntl_pall, MATCH_NTL_PALL, MASK_NTL_PALL)
@@ -3370,6 +3378,12 @@ DECLARE_INSN(c_ntl_p1, MATCH_C_NTL_P1, MASK_C_NTL_P1)
 DECLARE_INSN(c_ntl_pall, MATCH_C_NTL_PALL, MASK_C_NTL_PALL)
 DECLARE_INSN(c_ntl_s1, MATCH_C_NTL_S1, MASK_C_NTL_S1)
 DECLARE_INSN(c_ntl_all, MATCH_C_NTL_ALL, MASK_C_NTL_ALL)
+
+/* Zacas instructions.  */
+DECLARE_INSN(amocas_w, MATCH_AMOCAS_W, MASK_AMOCAS_W)
+DECLARE_INSN(amocas_d, MATCH_AMOCAS_D, MASK_AMOCAS_D)
+DECLARE_INSN(amocas_q, MATCH_AMOCAS_Q, MASK_AMOCAS_Q)
+
 /* Zawrs instructions.  */
 DECLARE_INSN(wrs_nto, MATCH_WRS_NTO, MASK_WRS_NTO)
 DECLARE_INSN(wrs_sto, MATCH_WRS_STO, MASK_WRS_STO)
