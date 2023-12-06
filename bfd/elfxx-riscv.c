@@ -1192,7 +1192,7 @@ static struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"sstc", "zicsr",		check_implicit_always},
   {"svadu", "zicsr",		check_implicit_always},
   {"zacas", "a",	check_implicit_always},
-  {"zabha", "zacas", 	check_implicit_always},
+  {"zabha", "a", 	check_implicit_always},
   {NULL, NULL, NULL}
 };
 
@@ -2419,6 +2419,9 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zacas");
     case INSN_CLASS_ZABHA:
       return riscv_subset_supports (rps, "zabha");
+    case INSN_CLASS_ZABHA_AND_ZACAS:
+      return (riscv_subset_supports (rps, "zabha")
+	      && riscv_subset_supports (rps, "zacas"));
     case INSN_CLASS_F:
       return riscv_subset_supports (rps, "f");
     case INSN_CLASS_D:
@@ -2633,6 +2636,16 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return _("zacas");
     case INSN_CLASS_ZABHA:
       return _("zabha");
+    case INSN_CLASS_ZABHA_AND_ZACAS:
+      if (!riscv_subset_supports (rps, "zabha"))
+	{
+	  if (!riscv_subset_supports (rps, "zacas"))
+	    return _("zabha' and `zacas");
+	  else
+	    return _("zabha");
+	}
+      else
+	return _("zacas");
     case INSN_CLASS_F:
       return "f";
     case INSN_CLASS_D:

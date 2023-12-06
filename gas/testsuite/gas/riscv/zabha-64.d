@@ -1,4 +1,4 @@
-#as: -march=rv64ia_zabha
+#as: -march=rv64ia_zabha_zacas
 #source: zabha.s
 #objdump: -d
 
